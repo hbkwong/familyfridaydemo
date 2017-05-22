@@ -11,4 +11,9 @@
 #
 
 class Restaurant < ApplicationRecord
+  has_many :lunches
+
+  has_many :reviews,
+    through: :lunches,
+    source: :reviews
 end

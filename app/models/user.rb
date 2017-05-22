@@ -11,4 +11,9 @@
 #
 
 class User < ApplicationRecord
+  has_many :reviews
+
+  has_many :lunches,
+    through: :reviews,
+    source: :lunch
 end
