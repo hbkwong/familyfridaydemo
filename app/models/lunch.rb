@@ -17,4 +17,7 @@ class Lunch < ApplicationRecord
   has_many :users,
     through: :reviews,
     source: :user
+
+  validates :name, :restaurant_id, presence: true
+  validates :name, uniqueness: true
 end

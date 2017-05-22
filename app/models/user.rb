@@ -16,4 +16,7 @@ class User < ApplicationRecord
   has_many :lunches,
     through: :reviews,
     source: :lunch
+
+  validates :email, presence: true
+  validates :email, uniqueness: true
 end

@@ -16,4 +16,7 @@ class Restaurant < ApplicationRecord
   has_many :reviews,
     through: :lunches,
     source: :reviews
+
+  validates :name, presence: true
+  validates :name, uniqueness: true
 end
