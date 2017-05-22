@@ -7,6 +7,11 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def new
+    @review = Review.new
+    render :new
+  end
+
   def review_params
     params.require(:review).permit([:user_id, :lunch_id, :rating])
   end
