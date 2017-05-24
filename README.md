@@ -1,16 +1,16 @@
 # Family Friday Demo
 
-This repo builds a responsive email template to solicit feedback from teammates after Family Friday meals. Since information collected from the email can offer actionable insights, the email posts all relevant information to a database. As such, the email is realized with Rails app with a PostgreSQL database.
+This repo builds a responsive email template to solicit feedback from teammates after Family Friday meals. Since information collected from the email can offer actionable insights, the email stores all relevant information to a database. As such, the email is realized with Rails app with a PostgreSQL database.
 
 ![Email](app/assets/images/template.png)
 
 ## Class structure
 
-To streamline the persistence of data captured, information is divided into primary tables:
+To streamline the persistence of data captured, information is divided into four primary tables:
 - `Restaurant`, which holds basic information of the Family Friday restaurant: logo, name, and yelp_link
-- `User` (e.g., "A-Lister" or "member"), which captures vital information such as email (how do teammates receive the email without an email address?), name, and team
+- `User` (e.g., "A-Lister" or "member"), which captures vital information such as name, team, and email (how do teammates receive the email without an email address?)
 - `Lunch`, which represents the Family Friday event itself. The lunch is tied to a restaurant_id as well as a unique name
-- `Review`, originally designed to be a join-table for User and Lunch, but grew to store the rating as well
+- `Review`, originally designed to be a join-table for User and Lunch, but now includes a column for rating as well
 
 Models for these tables include relevant associations. For example, since the `Review` table holds a foreign key (`lunch_id`) that corresponds to a column in the `Lunch` table (no pun intended), a given review must belong to a lunch. Reversing this relationship, a lunch may have many reviews. A snippet of the `Lunch` model:
 
@@ -46,7 +46,7 @@ class Lunch < ApplicationRecord
 end
 ```
 
-Additional features of the class structure are validations for non-null values for `restaurant_id`, as well as a custom methods to aid in calculations of persisted data.
+Additional features of the class structure are validations for non-null values for `restaurant_id`, as well as a custom method to aid in calculations of persisted data.
 
 ## Email function
 
@@ -77,4 +77,4 @@ Each lunch's `show` page offers information as to its feedback. Leveraging the a
 * [ ] Deeper analytics: reviews to be viewable in table-format, with additional information per review (user name, details about the user, etc.)
 * [ ] Additional database information: which teammate dined with which teammate?
 * [ ] Availability of further comments for low scores -- discover why a certain Family Friday may not have been a pleasant experience
-* [ ] Tests
+* [ ] Tests (RSpec)
