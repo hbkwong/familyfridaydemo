@@ -20,4 +20,10 @@ class Lunch < ApplicationRecord
 
   validates :name, :restaurant_id, presence: true
   validates :name, uniqueness: true
+
+  def average
+    sum = 0
+    self.reviews.each { |review| sum += review.rating }
+    (sum.to_f/(self.reviews.count)).round(2)
+  end
 end

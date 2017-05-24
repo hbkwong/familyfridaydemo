@@ -1,3 +1,24 @@
-// Place all the styles related to the Lunches controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.label {
+  font-size: 26px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: lighter;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #07516C;
+}
+
+.info {
+  font-size: 16px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: lighter;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

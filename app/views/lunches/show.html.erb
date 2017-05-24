@@ -1,0 +1,32 @@
+<div class="logo">
+  <img src="http://res.cloudinary.com/instagramme/image/upload/c_scale,w_600/v1495517553/logo_miluqf.png" alt="logo">
+</div>
+
+<h2 class="label">Lunch name:</h2>
+<div class="info">
+  <%= @lunch.name %>
+</div>
+
+<h2 class="label">Restaurant</h2>
+<div class="info">
+  <%= @lunch.restaurant.name %>
+</div>
+
+<h2 class="label">Average score:</h2>
+<div class="info">
+  <%= @lunch.average %>
+</div>
+
+<h2 class="label">Number of reviews:</h2>
+<div class="info">
+  <%= @lunch.reviews.count %>
+</div>
+
+<h2 class="label">Reviews:</h2>
+<ul>
+  <% @lunch.reviews.each do |review| %>
+  <li class="info">
+    <%= review.rating %>
+  </li>
+  <% end %>
+</ul>

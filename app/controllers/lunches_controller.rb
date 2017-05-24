@@ -7,6 +7,10 @@ class LunchesController < ApplicationController
     end
   end
 
+  def show
+    @lunch = Lunch.find_by(id: params[:id])
+  end
+
   def lunch_params
     params.require(:lunch).permit([:name, :restaurant_id])
   end
