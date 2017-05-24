@@ -1,3 +1,19 @@
 // Place all the styles related to the Reviews controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.header {
+  font-size: 36px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: lighter;
+  display: flex;
+  justify-content: center;
+  // align-items: center;
+  margin-top: 10%;
+  color: #07516C;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
