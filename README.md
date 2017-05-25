@@ -52,7 +52,7 @@ Additional features of the class structure are validations for non-null values f
 
 As emails are opened in in diverse environments (mobile, tablet, desktop, Outlook, Gmail, etc.), the HTML email itself should be responsive. Formatting of the HTML email is constructed with the MJML framework.
 
-To store teammates' feedback in a database, each numbered button represents an HTML form. A `POST` request is sent upon submission, with hidden fields capturing the `rating`, `user_id`, and `lunch_id`.
+**In the original implementation** of storing teammates' feedback in a database, each numbered button represented an HTML form. A `POST` request was sent upon submission, with hidden fields capturing the `rating`, `user_id`, and `lunch_id`.
 
 ```html
 <form action="<%= reviews_url %>" method="POST">
@@ -65,6 +65,48 @@ To store teammates' feedback in a database, each numbered button represents an H
     style="border:none;border-radius:0px;display:block;outline:none;text-decoration:none;width:100%;height:auto;"
     width="80" />
 </form>
+```
+
+If the form were viewed within the Rails app itself (i.e., not from an email), there would be no issues with this approach. The data would successfully commit to the database. However, as we expect to see the form as an HTML email, a POST request would be **not** be successful.
+
+The reason for this is that when the user views the form to create their review, Rails generates a random `authenticity token`, stores it in the session, and keeps the value as a hidden input in the form (above). When the user submits the form, Rails checks for the authenticity token, compares it to the stored token, and only allows the POST request to continue if they match. This prevents a CSRF attack, barring users from submitting the form to the app without viewing the form within the app itself.
+
+As such, **the current implementation is a `GET` request**. Each numbered button in the email now supplies query parameters within the URL for the GET request.
+
+```html
+<a href="<%= reviews_url %>?user_id=1&lunch_id=1&rating=1">
+  <img src="http://res.cloudinary.com/instagramme/image/upload/v1495519201/imageedit_8_4411252807_h9v7ue.png"
+  style="border:none;border-radius:0px;display:block;outline:none;text-decoration:none;width:100%;height:auto;"
+  alt="1"
+  width="80" >
+</a>
+```
+
+ReviewsController#create and routes were updated accordingly:
+
+```ruby
+# ...
+class ReviewsController < ApplicationController
+  def create
+    @review = Review.create(
+      user_id: params[:user_id],
+      lunch_id: params[:lunch_id],
+      rating: params[:rating]
+      )
+    render :show
+  end
+# ...
+end
+```
+
+```ruby
+Rails.application.routes.draw do
+  resources :users, only: [:create]
+  resources :lunches, only: [:create, :show]
+  resources :restaurants, only: [:create]
+  resources :reviews, only: [:new, :show]
+  get 'reviews' => 'reviews#create'
+end
 ```
 
 ## Analytics
