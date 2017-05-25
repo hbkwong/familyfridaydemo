@@ -1,6 +1,6 @@
 # Family Friday Demo
 
-This repo builds a responsive email template to solicit feedback from teammates after Family Friday meals. Since information collected from the email can offer actionable insights, the email stores all relevant information to a database. As such, the email is realized with Rails app with a PostgreSQL database.
+This repo builds a responsive email template to solicit feedback from teammates after Family Friday meals. Since information collected from the email can offer actionable insights, the email stores all relevant information to a database. As such, the email is realized in a Rails app with a PostgreSQL database.
 
 ![Email](app/assets/images/template.png)
 
@@ -10,7 +10,7 @@ To streamline the persistence of data captured, information is divided into four
 - `Restaurant`, which holds basic information of the Family Friday restaurant: logo, name, and yelp_link
 - `User` (e.g., "A-Lister" or "member"), which captures vital information such as name, team, and email (how do teammates receive the email without an email address?)
 - `Lunch`, which represents the Family Friday event itself. The lunch is tied to a restaurant_id as well as a unique name
-- `Review`, originally designed to be a join-table for User and Lunch, but now includes a column for rating as well
+- `Review`, originally designed to be a join-table for User and Lunch, but now also includes a column for rating
 
 Models for these tables include relevant associations. For example, since the `Review` table holds a foreign key (`lunch_id`) that corresponds to a column in the `Lunch` table (no pun intended), a given review must belong to a lunch. Reversing this relationship, a lunch may have many reviews. A snippet of the `Lunch` model:
 
@@ -67,9 +67,11 @@ As emails are opened in in diverse environments (mobile, tablet, desktop, Outloo
 </form>
 ```
 
-If the form were viewed within the Rails app itself (i.e., not from an email), there would be no issues with this approach. The data would successfully commit to the database. However, as we expect to see the form as an HTML email, a POST request would be **not** be successful.
+If the form were viewed within the Rails app itself (i.e., not from an email), there would be no issues with this approach. The data would successfully commit to the database. However, since we expect to see the form as an HTML email, a POST request would be **not** be successful.
 
-The reason for this is that when the user views the form to create their review, Rails generates a random `authenticity token`, stores it in the session, and keeps the value as a hidden input in the form (above). When the user submits the form, Rails checks for the authenticity token, compares it to the stored token, and only allows the POST request to continue if they match. This prevents a CSRF attack, barring users from submitting the form to the app without viewing the form within the app itself.
+The reason for this is that when the user views the form to create their review, Rails generates a random `authenticity token`, stores it in the session, and keeps the value as a hidden input in the form (above). When the user submits the form, Rails checks for the authenticity token, compares it to the stored token, and only allows the POST request to continue if they match.
+
+This helps prevent a CSRF attack, and bars users from submitting the form to the app without viewing the form within the app itself.
 
 As such, **the current implementation is a `GET` request**. Each numbered button in the email now supplies query parameters within the URL for the GET request.
 
@@ -114,6 +116,15 @@ end
 Each lunch's `show` page offers information as to its feedback. Leveraging the aforementioned associations between the four classes, we are able to view insights for that lunch, including its average score and current number of reviews.
 
 ![Analytics](app/assets/images/analytics.png)
+
+Restaurant names, for example, are available via its association to a particular lunch (i.e., the lunch must have a restaurant).
+
+```html
+<h2 class="label">Restaurant</h2>
+<div class="info">
+  <%= @lunch.restaurant.name %>
+</div>
+```
 
 ## Potential future release
 * [ ] Deeper analytics: reviews to be viewable in table-format, with additional information per review (user name, details about the user, etc.)
