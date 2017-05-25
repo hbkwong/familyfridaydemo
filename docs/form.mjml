@@ -1,0 +1,96 @@
+<mjml>
+
+	<mj-head>
+      <mj-title>How was lunch this afternoon?</mj-title>
+
+			<mj-attributes>
+					<mj-all padding="0" />
+					<mj-text font-family="sans-serif" color="#556367"/>
+					<mj-class name="desc" color="#45495d" />
+			</mj-attributes>
+
+			<mj-style>
+					a {
+						text-decoration: none;
+					}
+					.desc {
+						color: #556367;
+					}
+			</mj-style>
+
+	</mj-head>
+
+	<mj-body>
+
+		<mj-container>
+
+        <mj-section>
+            <mj-column>
+                <mj-image padding-bottom="20px" padding-top="20px" width="220px" src="http://res.cloudinary.com/instagramme/image/upload/v1495517553/logo_miluqf.png" />
+            </mj-column>
+        </mj-section>
+
+				<mj-section padding="0 0 20 0">
+						<mj-column>
+								<mj-divider border-width="3px" border-color="#EEEBE7" />
+						</mj-column>
+				</mj-section>
+
+				<mj-section>
+						<mj-column>
+								<mj-text font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-weight="lighter" padding-top="40px" align="center" font-size="30px">
+										Happy Friday, A-Listers!
+								</mj-text>
+								<mj-text font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-weight="lighter" padding-top="20px" align="center" font-size="30px">
+										How was lunch today (5/26/17)?
+								</mj-text>
+								<mj-text font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-weight="lighter" padding-top="20px" align="center" font-size="20px">
+										( Poor - Great )
+								</mj-text>
+						</mj-column>
+				</mj-section>
+
+				<mj-section padding="40 20" padding-bottom="50px">
+						<mj-group width="40%">
+								<mj-column>
+										<mj-image width="80px" padding="10" src="http://res.cloudinary.com/instagramme/image/upload/v1495519201/imageedit_8_4411252807_h9v7ue.png" />
+								</mj-column>
+								<mj-column>
+										<mj-image width="80px" padding="10" src="http://res.cloudinary.com/instagramme/image/upload/v1495519201/imageedit_3_4889916677_jnmmyc.png" />
+								</mj-column>
+						</mj-group>
+						<mj-group width="60%">
+								<mj-column>
+										<mj-image width="80px" padding="10" src="http://res.cloudinary.com/instagramme/image/upload/v1495519201/imageedit_2_7937764447_wrvxyg.png" />
+								</mj-column>
+								<mj-column>
+										<mj-image width="80px" padding="10" src="http://res.cloudinary.com/instagramme/image/upload/v1495519201/imageedit_1_5912153925_kqr1gj.png" />
+								</mj-column>
+								<mj-column>
+										<mj-image width="80px" padding="10" src="http://res.cloudinary.com/instagramme/image/upload/v1495519201/imageedit_2_9784742962_dme227.png" />
+								</mj-column>
+						</mj-group>
+				</mj-section>
+
+				<mj-section background-color="#EEEBE7" padding="30 40">
+						<mj-column>
+								<mj-divider border-width="2px" border-color="#556367" />
+								<mj-text padding="20 0 0 0" align="center" font-size="14">
+									<a class="desc" href="https://www.github.com/hbkwong">Github</a>
+									<a class="desc" href="https://www.linkedin.com/">LinkedIn</a>
+									<a class="desc" href="http://www.andrewkingwong.com">Portfolio</a>
+								</mj-text>
+								<mj-text align="center" color="#556367" font-size="10px" line-height="14px">
+										<p>Apartment List is the web’s fastest-growing apartment rental marketplace. Apartment List are renters and landlords ourselves, and know firsthand the widespread frustration of renting. Our mission: to reinvent the rental marketplace on the basis of trust and transparency.</p>
+										<p>Apartment List 500 3rd St. Ste 555 • San Francisco, CA 94107<br />Copyright © 2017 Apartment List. All rights reserved.</p>
+								</mj-text>
+						</mj-column>
+				</mj-section>
+
+		</mj-container>
+
+	</mj-body>
+
+
+
+</mjml>

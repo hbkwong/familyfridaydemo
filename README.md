@@ -117,7 +117,7 @@ Each lunch's `show` page offers information as to its feedback. Leveraging the a
 
 ![Analytics](app/assets/images/analytics.png)
 
-Restaurant names, for example, are available via its association to a particular lunch (i.e., the lunch must have a restaurant).
+Restaurant names, for example, are available via its association to a particular lunch (i.e., the lunch belongs to a restaurant).
 
 ```html
 <h2 class="label">Restaurant</h2>
