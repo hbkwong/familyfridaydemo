@@ -50,7 +50,7 @@ Additional features of the class structure are validations for non-null values f
 
 ## Email function
 
-As emails are opened in in diverse environments (mobile, tablet, desktop, Outlook, Gmail, etc.), the HTML email itself should be responsive. Formatting of the HTML email is constructed with the MJML framework.
+As emails are opened in in diverse environments (mobile, tablet, desktop, Outlook, Gmail, etc.), the HTML email itself should be responsive. Since Flexbox support across these environments is still progressing, formatting of the HTML email form is constructed with the MJML framework. 
 
 **In the original implementation** of storing teammates' feedback in a database, each numbered button represented an HTML form. A `POST` request was sent upon submission, with hidden fields capturing the `rating`, `user_id`, and `lunch_id`.
 
