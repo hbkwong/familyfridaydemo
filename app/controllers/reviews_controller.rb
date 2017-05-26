@@ -21,6 +21,8 @@ class ReviewsController < ApplicationController
     render :new
   end
 
+  private
+
   def review_params
     params.require(:review).permit([:user_id, :lunch_id, :rating])
   end

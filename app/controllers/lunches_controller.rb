@@ -11,6 +11,8 @@ class LunchesController < ApplicationController
     @lunch = Lunch.find_by(id: params[:id])
   end
 
+  private
+
   def lunch_params
     params.require(:lunch).permit([:name, :restaurant_id])
   end

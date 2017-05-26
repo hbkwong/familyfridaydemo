@@ -7,6 +7,8 @@ class RestaurantsController < ApplicationController
     end
   end
 
+  private
+
   def restaurant_params
     params.require(:user).permit([:name, :logo, :yelp_link])
   end
